@@ -145,18 +145,20 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            padding: 0.45rem 0.7rem;
             border-radius: 25px;
             transition: all 0.3s ease;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-link:hover {
@@ -1462,6 +1464,89 @@
             transform: translateY(-2px);
         }
 
+        /* Contact Form Styles */
+        .contact-form-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(15, 31, 26, 0.8);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--green-primary);
+            font-size: 1rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            background: rgba(10, 22, 16, 0.8);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+            background: rgba(10, 22, 16, 1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-accent) 100%);
+            color: var(--bg-primary);
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .form-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--green-glow);
+        }
+
+        .form-button:active {
+            transform: translateY(-1px);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--text-accent);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
         /* Languages section */
         .languages-section {
             background: var(--bg-accent);
@@ -1676,6 +1761,12 @@
             .contact-links {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .contact-form-container {
+                margin: 2rem auto;
+                padding: 1.5rem;
+                max-width: 100%;
             }
         }
 
@@ -2186,6 +2277,29 @@
                 <div class="contact-content">
                     <p>Ready to collaborate, discuss opportunities, share ideas, or just say hello? I'd love to hear from you and explore how we can work together to create something meaningful.</p>
                 </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/xyzwdpbg">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Your message here..." rows="5" class="form-textarea"></textarea>
+                        </div>
+                        <button type="submit" class="form-button">Send Message</button>
+                    </form>
+                    <p class="form-note">I'll get back to you as soon as possible!</p>
+                </div>
+
+                <!-- Quick Contact Links -->
+                <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--text-secondary);">Or reach out directly:</h3>
                 <div class="contact-links">
                     <a href="tel:+917010366061" class="contact-link">
                         <div class="contact-icon">
