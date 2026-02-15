@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "buildCommand": "true",
+  "outputDirectory": ".",
+  "public": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ],
+  "cleanUrls": false,
+  "trailingSlash": false
+}
