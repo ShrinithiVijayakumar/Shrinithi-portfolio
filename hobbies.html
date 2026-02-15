@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies - Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/hobbies.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">&lt;Portfolio/&gt;</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+                <li><a href="hobbies.html" class="nav-link active">Hobbies</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hobbies-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>My <span class="highlight">Creative</span> Side</h1>
+                    <p class="hero-subtitle">Beyond Code: Art, Writing & Personal Passions</p>
+                    <p class="hero-description">
+                        When I'm not coding, I explore my creativity through various artistic pursuits. 
+                        From digital art and writing to photography and music, these hobbies fuel my 
+                        imagination and bring balance to my technical world.
+                    </p>
+                    <div class="hobby-categories">
+                        <div class="category-badge">
+                            <i class="fas fa-palette"></i>
+                            <span>Digital Art</span>
+                        </div>
+                        <div class="category-badge">
+                            <i class="fas fa-pen-fancy"></i>
+                            <span>Creative Writing</span>
+                        </div>
+                        <div class="category-badge">
+                            <i class="fas fa-camera"></i>
+                            <span>Photography</span>
+                        </div>
+                        <div class="category-badge">
+                            <i class="fas fa-music"></i>
+                            <span>Music</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="creative-workspace">
+                        <div class="workspace-item palette">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="workspace-item notebook">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="workspace-item camera">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="workspace-item headphones">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Art Section -->
+        <section class="hobby-section art-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h2>Digital Art & Design</h2>
+                    <p>Exploring creativity through digital mediums and visual storytelling</p>
+                </div>
+                
+                <div class="art-gallery">
+                    <div class="gallery-item featured" data-category="digital">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Abstract+Digital+Art" alt="Abstract Digital Art">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h3>Abstract Dimensions</h3>
+                                    <p>Digital Abstract Art</p>
+                                    <button class="view-btn" onclick="openLightbox(this)">
+                                        <i class="fas fa-search-plus"></i>
+                                        View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="illustration">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Character+Design" alt="Character Design">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h3>Character Studies</h3>
+                                    <p>Character Design</p>
+                                    <button class="view-btn" onclick="openLightbox(this)">
+                                        <i class="fas fa-search-plus"></i>
+                                        View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="digital">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/f093fb/ffffff?text=Landscape+Art" alt="Digital Landscape">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h3>Digital Landscapes</h3>
+                                    <p>Environment Art</p>
+                                    <button class="view-btn" onclick="openLightbox(this)">
+                                        <i class="fas fa-search-plus"></i>
+                                        View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="illustration">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Logo+Design" alt="Logo Design">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h3>Brand Identity</h3>
+                                    <p>Logo Design</p>
+                                    <button class="view-btn" onclick="openLightbox(this)">
+                                        <i class="fas fa-search-plus"></i>
+                                        View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="art-tools">
+                    <h3>My Digital Art Toolkit</h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <i class="fab fa-figma"></i>
+                            <span>Figma</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-vector-square"></i>
+                            <span>Illustrator</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Procreate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing Section -->
+        <section class="hobby-section writing-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h2>Creative Writing</h2>
+                    <p>Crafting stories, poetry, and thoughts through the power of words</p>
+                </div>
+
+                <div class="writing-showcase">
+                    <div class="writing-categories">
+                        <div class="category-filter active" data-category="all">All Writing</div>
+                        <div class="category-filter" data-category="poetry">Poetry</div>
+                        <div class="category-filter" data-category="stories">Short Stories</div>
+                        <div class="category-filter" data-category="blog">Blog Posts</div>
+                        <div class="category-filter" data-category="tech">Tech Articles</div>
+                    </div>
+
+                    <div class="writing-grid">
+                        <article class="writing-item featured" data-category="poetry">
+                            <div class="writing-header">
+                                <div class="writing-type">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Poetry</span>
+                                </div>
+                                <div class="writing-date">Dec 2023</div>
+                            </div>
+                            <h3>Digital Dreams</h3>
+                            <div class="writing-preview">
+                                <p><em>"In circuits of silicon and streams of light,<br>
+                                Where algorithms dance through the night,<br>
+                                Code becomes poetry, syntax so pure,<br>
+                                Creating worlds that will endure..."</em></p>
+                            </div>
+                            <div class="writing-tags">
+                                <span class="tag">Technology</span>
+                                <span class="tag">Poetry</span>
+                                <span class="tag">Digital Age</span>
+                            </div>
+                            <button class="read-more-btn">Read Full Poem</button>
+                        </article>
+
+                        <article class="writing-item" data-category="stories">
+                            <div class="writing-header">
+                                <div class="writing-type">
+                                    <i class="fas fa-book"></i>
+                                    <span>Short Story</span>
+                                </div>
+                                <div class="writing-date">Nov 2023</div>
+                            </div>
+                            <h3>The Last Developer</h3>
+                            <div class="writing-preview">
+                                <p>In a world where AI has taken over most programming tasks, 
+                                   one developer holds the key to humanity's digital future. 
+                                   A tale of technology, creativity, and the irreplaceable human spirit...</p>
+                            </div>
+                            <div class="writing-tags">
+                                <span class="tag">Sci-Fi</span>
+                                <span class="tag">Technology</span>
+                                <span class="tag">Future</span>
+                            </div>
+                            <button class="read-more-btn">Read Story</button>
+                        </article>
+
+                        <article class="writing-item" data-category="blog">
+                            <div class="writing-header">
+                                <div class="writing-type">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Blog Post</span>
+                                </div>
+                                <div class="writing-date">Oct 2023</div>
+                            </div>
+                            <h3>Finding Balance in the Digital Age</h3>
+                            <div class="writing-preview">
+                                <p>Exploring how creative hobbies complement technical skills 
+                                   and why every developer should nurture their artistic side. 
+                                   A personal reflection on work-life balance...</p>
+                            </div>
+                            <div class="writing-tags">
+                                <span class="tag">Personal</span>
+                                <span class="tag">Balance</span>
+                                <span class="tag">Creativity</span>
+                            </div>
+                            <button class="read-more-btn">Read Post</button>
+                        </article>
+
+                        <article class="writing-item" data-category="tech">
+                            <div class="writing-header">
+                                <div class="writing-type">
+                                    <i class="fas fa-code"></i>
+                                    <span>Tech Article</span>
+                                </div>
+                                <div class="writing-date">Sep 2023</div>
+                            </div>
+                            <h3>The Art of Clean Code</h3>
+                            <div class="writing-preview">
+                                <p>Code is poetry in motion. Discover how artistic principles 
+                                   can improve code readability, maintainability, and overall 
+                                   software architecture design...</p>
+                            </div>
+                            <div class="writing-tags">
+                                <span class="tag">Programming</span>
+                                <span class="tag">Best Practices</span>
+                                <span class="tag">Clean Code</span>
+                            </div>
+                            <button class="read-more-btn">Read Article</button>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photography Section -->
+        <section class="hobby-section photography-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h2>Photography</h2>
+                    <p>Capturing moments and perspectives through the lens</p>
+                </div>
+
+                <div class="photo-gallery">
+                    <div class="photo-item landscape">
+                        <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Landscape+Photography" alt="Landscape Photography">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h4>Mountain Sunrise</h4>
+                                <p>Landscape Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-item portrait">
+                        <img src="https://via.placeholder.com/400x500/764ba2/ffffff?text=Portrait+Photography" alt="Portrait Photography">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h4>Street Portraits</h4>
+                                <p>Portrait Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-item street">
+                        <img src="https://via.placeholder.com/400x300/f093fb/ffffff?text=Street+Photography" alt="Street Photography">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h4>Urban Life</h4>
+                                <p>Street Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-item nature">
+                        <img src="https://via.placeholder.com/400x400/667eea/ffffff?text=Nature+Photography" alt="Nature Photography">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h4>Natural Patterns</h4>
+                                <p>Nature Photography</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Interests Section -->
+        <section class="hobby-section interests-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>Other Interests</h2>
+                    <p>The diverse activities that inspire and energize me</p>
+                </div>
+
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Music Production</h3>
+                        <p>Creating ambient and electronic music tracks using digital audio workstations. 
+                           Music helps me think creatively and provides a different perspective on pattern recognition.</p>
+                        <div class="interest-details">
+                            <span class="detail-badge">Ableton Live</span>
+                            <span class="detail-badge">Electronic</span>
+                            <span class="detail-badge">Ambient</span>
+                        </div>
+                    </div>
+
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Gardening</h3>
+                        <p>Growing herbs and small plants. There's something deeply satisfying about nurturing life 
+                           and watching things grow - much like watching code come to life in applications.</p>
+                        <div class="interest-details">
+                            <span class="detail-badge">Herbs</span>
+                            <span class="detail-badge">Succulents</span>
+                            <span class="detail-badge">Indoor Plants</span>
+                        </div>
+                    </div>
+
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <h3>Strategic Games</h3>
+                        <p>Chess, puzzle games, and strategy boardgames challenge my problem-solving skills 
+                           in different ways than coding, keeping my mind sharp and adaptable.</p>
+                        <div class="interest-details">
+                            <span class="detail-badge">Chess</span>
+                            <span class="detail-badge">Puzzles</span>
+                            <span class="detail-badge">Strategy</span>
+                        </div>
+                    </div>
+
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Fitness & Wellness</h3>
+                        <p>Regular exercise and mindfulness practices help maintain physical and mental well-being, 
+                           essential for long coding sessions and creative thinking.</p>
+                        <div class="interest-details">
+                            <span class="detail-badge">Yoga</span>
+                            <span class="detail-badge">Running</span>
+                            <span class="detail-badge">Meditation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="creative-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>Let's Create Something Together</h3>
+                    <p>Whether it's a technical project or a creative collaboration, I'd love to connect!</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Get in Touch
+                        </a>
+                        <a href="projects.html" class="btn btn-outline">
+                            <i class="fas fa-code"></i>
+                            View My Work
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox for images -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" src="" alt="">
+            <div class="lightbox-caption">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Writing category filtering
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const writingItems = document.querySelectorAll('.writing-item');
+
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    // Remove active class from all filters
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+                    // Add active class to clicked filter
+                    filter.classList.add('active');
+
+                    const category = filter.getAttribute('data-category');
+
+                    writingItems.forEach(item => {
+                        if (category === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            const itemCategory = item.getAttribute('data-category');
+                            item.style.display = itemCategory === category ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+
+            // Set active nav link
+            document.querySelector('.nav-link[href="hobbies.html"]').classList.add('active');
+
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('.hobby-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease-out';
+                observer.observe(section);
+            });
+        });
+
+        // Lightbox functionality
+        function openLightbox(button) {
+            const lightbox = document.getElementById('lightbox');
+            const img = button.closest('.gallery-item').querySelector('img');
+            const title = button.closest('.overlay-content').querySelector('h3').textContent;
+            const subtitle = button.closest('.overlay-content').querySelector('p').textContent;
+            
+            document.querySelector('.lightbox-image').src = img.src;
+            document.querySelector('.lightbox-caption h3').textContent = title;
+            document.querySelector('.lightbox-caption p').textContent = subtitle;
+            
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close lightbox
+        document.querySelector('.lightbox-close').addEventListener('click', () => {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close lightbox on outside click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                document.getElementById('lightbox').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

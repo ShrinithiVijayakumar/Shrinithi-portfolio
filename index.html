@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ===== ALWAYS RUNNING PORTFOLIO FEATURES ===== -->\n    <!-- \n    🔄 AUTO-RUNNING FUNCTIONS:\n    ✅ Profile slideshow rotates every 3.5 seconds\n    ✅ Navigation updates on scroll automatically \n    ✅ Hover animations trigger on mouse movement\n    ✅ Mobile menu responds to screen size changes\n    ✅ Skills expand/collapse on click\n    ✅ Certificates can be uploaded by clicking\n    \n    📋 MAINTENANCE NOTES:\n    - All GitHub links point to actual repositories\n    - Images load from ./images/ folder\n    - Color theme uses CSS variables for consistency\n    - Responsive design works on all devices\n    - Code is well-documented for future updates\n    \n    🌟 AUTHOR: Shrinithi Vijayakumar - February 2026\n    -->\n    \n    <!-- Basic HTML5 Document Setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrinithi Vijayakumar's Ever-Green Journey</title>
+    
+    <!-- Google Fonts Integration for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons for UI Elements -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* ===== CSS RESET AND BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ===== GREENISH-BLACK THEME COLOR VARIABLES ===== */
+            /* Primary Background Colors */
+            --bg-primary: #0a1610;     /* Main dark background */
+            --bg-secondary: #0f1f1a;   /* Secondary background */
+            --bg-accent: #142620;      /* Accent background */
+            
+            /* Text Colors */
+            --text-primary: #e8f4f0;   /* Primary text - white-green */
+            --text-secondary: #c2d4cc; /* Secondary text - light gray-green */
+            --text-accent: #9db3a5;    /* Accent text - muted green */
+            
+            /* Green Color Palette */
+            --green-primary: #4ade80;  /* Main green accent */
+            --green-secondary: #22d3ee; /* Cyan-green secondary */
+            --green-accent: #34d399;   /* Bright green accent */
+            --green-glow: rgba(74, 222, 128, 0.3); /* Green glow effect */
+            --green-vibrant: #00ff87;  /* Vibrant green */
+            
+            /* Shadow and Gradient Effects */
+            --shadow-green: rgba(52, 211, 153, 0.15);
+            --gradient-primary: linear-gradient(135deg, #0a1610 0%, #142620 100%);
+            --gradient-accent: linear-gradient(135deg, #4ade80 0%, #22d3ee 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--green-primary) var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--green-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--green-accent);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND VISUAL EFFECTS ===== */
+        /* Fixed background container for floating particles */
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicking through to content */
+            z-index: -1;
+        }
+
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--green-primary);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* ===== NAVIGATION BAR STYLES ===== */
+        /* Fixed navigation bar with glassmorphism effect */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Always stays on top */
+            padding: 1rem 0;
+            background: rgba(10, 22, 16, 0.95); /* Semi-transparent background */
+            backdrop-filter: blur(20px); /* Glassmorphism blur effect */
+            border-bottom: 1px solid rgba(74, 222, 128, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--green-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--green-primary);
+            background: rgba(74, 222, 128, 0.1);
+            font-weight: 600;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--green-primary);
+            transition: 0.3s;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-top: 80px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--green-primary);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Home Section */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-primary);
+            position: relative;
+        }
+
+        .home-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .home-text {
+            max-width: 600px;
+        }
+
+        .home-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .home-subtitle {
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .home-description {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .home-photo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== PROFILE SLIDESHOW STYLES ===== */
+        /* Circular profile photo container with glow effect */
+        .photo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%; /* Makes it circular */
+            overflow: hidden;
+            border: 4px solid var(--green-primary);
+            box-shadow: 0 0 40px var(--green-glow);
+            animation: glow 2s ease-in-out infinite alternate; /* Pulsing glow */
+        }
+
+        /* Keyframe animation for glowing effect */
+        @keyframes glow {
+            from { box-shadow: 0 0 40px var(--green-glow); }
+            to { box-shadow: 0 0 60px rgba(74, 222, 128, 0.5); }
+        }
+
+        /* Slideshow container */
+        .profile-slideshow {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Individual slide styling */
+        .profile-slide {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--green-primary), var(--green-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--bg-primary);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.8s ease-in-out; /* Smooth transition */
+        }
+
+        /* Active slide visibility */
+        .profile-slide.active {
+            opacity: 1; /* Visible when active */
+        }
+
+        /* Image styling within slides - FIXED POSITIONING */
+        .profile-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fills container while maintaining aspect ratio */
+            object-position: center 20%; /* Positions face properly in circle */
+            border-radius: 50%;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(45deg, var(--green-primary), var(--green-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--bg-primary);
+        }
+
+        /* About Section */
+        #about {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+        }
+
+        /* Family Section */
+        #family {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+
+        .family-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .family-photos {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .family-photo {
+            width: 150px;
+            height: 200px;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            border: 2px solid rgba(74, 222, 128, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--green-primary);
+        }
+
+        .family-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .family-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(74, 222, 128, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .family-photo:hover::before {
+            opacity: 1;
+        }
+
+        .family-story {
+            text-align: left;
+        }
+
+        .family-story h3 {
+            font-size: 1.8rem;
+            color: var(--green-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .family-story p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+        }
+
+        .family-story {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .family-story .highlight-text {
+            color: var(--green-accent);
+            font-weight: 600;
+        }
+
+        /* Family Section */
+        #family {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+
+        .family-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .family-photos {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .family-photo {
+            width: 150px;
+            height: 200px;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            border: 2px solid rgba(74, 222, 128, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--green-primary);
+        }
+
+        .family-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .family-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(74, 222, 128, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .family-photo:hover::before {
+            opacity: 1;
+        }
+
+        .family-story {
+            text-align: left;
+        }
+
+        /* Education Section */
+        #education {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+        }
+
+        .education-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .education-card {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .education-degree {
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .education-year {
+            color: var(--text-accent);
+            font-size: 1.1rem;
+        }
+
+        /* Internship Section */
+        #internships {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .internship-card {
+            background: var(--bg-accent);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .internship-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .internship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px var(--shadow-green);
+            border-color: var(--green-primary);
+            border-width: 2px;
+        }
+
+        .internship-card:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--green-primary);
+            border-radius: 20px;
+            box-shadow: 0 0 20px var(--green-glow);
+            animation: glow-pulse 1s ease-in-out;
+        }
+
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 5px var(--green-glow); }
+            50% { box-shadow: 0 0 30px var(--green-glow); }
+            100% { box-shadow: 0 0 5px var(--green-glow); }
+        }
+
+        .internship-role {
+            font-size: 1.4rem;
+            color: var(--green-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .internship-company {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .internship-duration {
+            color: var(--text-accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .internship-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .project-card:hover .project-title {
+            color: var(--green-accent);
+        }
+
+        .project-card:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(74, 222, 128, 0.05);
+            border-radius: 20px;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            color: var(--green-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-problem {
+            background: rgba(74, 222, 128, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--green-primary);
+            font-size: 0.95rem;
+        }
+
+        .project-problem strong {
+            color: var(--green-accent);
+        }
+
+        .project-role {
+            color: var(--green-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-learnings {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--text-accent);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            font-size: 0.95rem;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .project-learnings strong {
+            color: var(--green-primary);
+        }
+
+        .project-problem {
+            background: rgba(74, 222, 128, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--green-primary);
+        }
+
+        .project-role {
+            color: var(--green-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-learnings {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--text-accent);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .project-card:hover .project-title {
+            color: var(--green-accent);
+        }
+
+        .project-card:hover .project-problem {
+            background: rgba(74, 222, 128, 0.15);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--green-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--green-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--green-primary);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--green-primary);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        #skills {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .technical-skills, .soft-skills {
+            background: var(--bg-accent);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .skills-title {
+            font-size: 1.8rem;
+            color: var(--green-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .tech-skills-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        /* Technical Skills - Floating Labels Design */
+        .tech-skills-floating {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .floating-skill {
+            position: relative;
+            text-align: center;
+        }
+
+        .skill-label {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            padding: 0.8rem 2rem;
+            background: transparent;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-line {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--green-primary), transparent);
+            box-shadow: 0 0 8px var(--green-glow);
+        }
+
+        .floating-skill:hover .skill-label {
+            color: var(--green-primary);
+            transform: translateY(-3px);
+        }
+
+        .floating-skill:hover .skill-line {
+            box-shadow: 0 0 15px var(--green-glow);
+            background: linear-gradient(90deg, var(--green-accent), var(--green-primary), var(--green-accent));
+        }
+
+        /* Soft Skills - Simple Boxes */
+        .soft-skills-simple {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .simple-skill {
+            background: transparent;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .simple-skill:hover {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+        }
+
+        .simple-skill.active {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+        }
+
+        .skill-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .skill-description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin-top 0.3s ease;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .simple-skill.active .skill-description {
+            max-height: 150px;
+            margin-top: 1rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .skill-level {
+            color: var(--green-primary);
+            font-weight: 600;
+        }
+
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .soft-skill {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .soft-skill:hover {
+            border-color: var(--green-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow-green);
+        }
+
+        .soft-skill.expanded {
+            border-color: var(--green-primary);
+            box-shadow: 0 15px 30px var(--shadow-green);
+            background: var(--bg-accent);
+        }
+
+        .soft-skill::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--green-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .soft-skill:hover::before,
+        .soft-skill.expanded::before {
+            width: 80%;
+        }
+
+        .soft-skill-story {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 1rem;
+            padding-top: 0;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-accent);
+            border-top: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .soft-skill.expanded .soft-skill-story {
+            max-height: 200px;
+            padding-top: 1rem;
+        }
+
+        .soft-skill h4 {
+            transition: color 0.3s ease;
+        }
+
+        .soft-skill:hover h4,
+        .soft-skill.expanded h4 {
+            color: var(--green-primary);
+        }
+
+        /* Certificates Section */
+        #certificates {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+        }
+
+        .certificates-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .certificate-image-container {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .certificate-image-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid rgba(74, 222, 128, 0.3);
+            padding: 0;
+            transition: all 0.3s ease;
+            height: 250px;
+            width: 100%;
+        }
+
+        .certificate-image-wrapper:hover {
+            border-color: var(--green-primary);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .certificate-image-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            background: transparent;
+            display: block;
+        }
+
+        /* Responsive: Stack images vertically on mobile */
+        @media (max-width: 768px) {
+            .certificate-image-container {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .certificate-image-wrapper {
+                width: 100%;
+            }
+        }
+
+        .simple-skill:hover .certificate-image-preview {
+            border-color: var(--green-primary);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.2);
+        }
+
+        .certificate-institution {
+            color: var(--green-accent);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .certificate-topic {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+
+        .certificate-story {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: var(--bg-secondary);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-story:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .certificate-story:nth-child(even) {
+            grid-template-columns: 1fr 300px;
+        }
+
+        .certificate-story:nth-child(even) .certificate-content {
+            order: -1;
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--green-primary), var(--green-accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-primary);
+            font-size: 2rem;
+            border: 2px solid var(--green-primary);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--shadow-green);
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .certificate-upload-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 22, 16, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-image:hover .certificate-upload-overlay {
+            opacity: 1;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .upload-btn {
+            background: var(--green-primary);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .upload-btn:hover {
+            background: var(--green-accent);
+            transform: translateY(-2px);
+        }
+
+        .certificate-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-institution {
+            color: var(--text-accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .certificate-year {
+            color: var(--green-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-story-text {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Hobbies Section */
+        #hobbies {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+
+        .hobbies-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .hobbies-subtitle {
+            text-align: center;
+            color: var(--text-accent);
+            margin-bottom: 3rem;
+        }
+
+        .hobbies-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .hobby-panel {
+            background: transparent;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+        }
+
+        .hobby-panel:hover {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+            transform: none;
+        }
+
+        .hobby-panel.expanded {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+        }
+
+        .hobby-icon {
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-right: 0.5rem;
+            display: inline;
+        }
+
+        .hobby-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: inline;
+        }
+
+        .hobby-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+            display: inline;
+            margin-left: 0.5rem;
+        }
+
+        .hobby-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin-top 0.3s ease;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .hobby-panel.expanded .hobby-content {
+            max-height: 150px;
+            margin-top: 1rem;
+        }
+
+        .skill-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .expand-btn {
+            color: var(--green-primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .expand-btn:hover {
+            color: var(--green-accent);
+        }
+
+        /* Resume Section */
+        .resume-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--green-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--green-primary);
+        }
+
+        .resume-btn:hover {
+            background: transparent;
+            color: var(--green-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-green);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--green-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Quick Buttons */
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid var(--green-primary);
+            border-radius: 25px;
+            color: var(--green-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--green-primary);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Languages section */
+        .languages-section {
+            background: var(--bg-accent);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .languages-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .language-item {
+            padding: 1.2rem 2rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            border: 2px solid rgba(74, 222, 128, 0.2);
+            color: var(--green-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--green-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .language-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px var(--shadow-green);
+            border-color: var(--green-primary);
+        }
+
+        .language-item:hover::before {
+            width: 80%;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .footer-text {
+            color: var(--text-accent);
+            font-size: 1rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 2% auto;
+            width: 90%;
+            height: 90%;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border: 2px solid var(--green-primary);
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: var(--green-primary);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close:hover {
+            color: var(--green-accent);
+        }
+
+        .resume-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(10, 22, 16, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .home-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .home-title {
+                font-size: 3rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .photo-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .timeline::after {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 20px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .certificate-story {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .certificate-story:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-story:nth-child(even) .certificate-content {
+                order: 0;
+            }
+
+            .family-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .tech-skills-floating {
+                gap: 1.5rem;
+            }
+
+            .floating-skill .skill-label {
+                font-size: 1.1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .home-title {
+                font-size: 2.5rem;
+            }
+
+            .photo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== MAIN HTML STRUCTURE ===== -->
+    <!-- Background visual effects container -->
+    <div class="background-effects">
+        <div class="floating-particles" id="particles"></div>
+    </div>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <!-- Fixed navigation with smooth scrolling links -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo/Brand name -->
+            <a href="#home" class="nav-logo">🌿 Shrinithi Vijayakumar's Journey</a>
+            
+            <!-- Navigation menu links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#family" class="nav-link" data-section="family">Family</a></li>
+                <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+                <li><a href="#internships" class="nav-link" data-section="internships">Internships</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#certificates" class="nav-link" data-section="certificates">Certificates</a></li>
+                <li><a href="#hobbies" class="nav-link" data-section="hobbies">Hobbies</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile menu toggle button -->
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="container">
+                <div class="home-content">
+                    <div class="home-text">
+                        <h1 class="home-title">Hi, I'm Shrinithi Vijayakumar </h1>
+                        <p class="home-subtitle">A positive soul who believes hard work never fails, slow and steady wins the race, and better late than never.</p>
+                        <p class="home-description">I am a third-year B.Tech Artificial Intelligence and Data Science student at M. Kumarasamy College of Engineering, Karur. I am deeply interested in Web Development and constantly exploring new technologies and competitive exams. I believe in learning, evolving, and moving forward, even when things feel heavy.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+917010366061" class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                7010366061
+                            </a>
+                            <a href="mailto:shrinithivijayakumar11@gmail.com" class="contact-btn">
+                                <i class="fas fa-envelope"></i>
+                                shrinithivijayakumar11@gmail.com
+                            </a>
+                            <a href="https://www.linkedin.com/in/shrinithi-vijayakumar-756441290" target="_blank" class="contact-btn">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/ShrinithiVijayakumar" target="_blank" class="contact-btn">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="home-photo">
+                        <div class="photo-container">
+                            <div class="profile-slideshow">
+                                <div class="profile-slide active">
+                                    <img src="./images/photo1.jpeg" alt="Shrinithi">
+                                </div>
+                                <div class="profile-slide">
+                                    <img src="./images/photo2.jpeg?v=2" alt="Shrinithi">
+                                </div>
+                                <div class="profile-slide">
+                                    <img src="./images/photo3.jpeg" alt="Shrinithi">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2>🌱 <span class="highlight">"The Girl Who Sees Green Even in Grey Days"</span></h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        I am someone who tries to see positivity even in negative situations. I move forward even when I feel drained. I believe happiness is not found — it is created.
+                    </p>
+                    <p class="about-text">
+                        I am passionate about:
+                        <br>• <strong>Web Development</strong> - Creating digital experiences that matter.
+                        <br>• <strong>Learning new technologies</strong> - Staying curious and growing.
+                        <br>• <strong>Exploring different government competitive exams</strong> - Preparing for my future goals.
+                        <br>• <strong>Self-growth and discipline</strong> - Building the person I want to Become.
+                    </p>
+                    <p class="about-text">
+                        I aspire to become a <strong>Government Employee</strong> by cracking <strong>UPSC or TNPSC</strong> in the future. This dream drives me to maintain discipline, consistency, and a growth mindset in everything I do.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Section -->
+        <section id="family" class="section">
+            <div class="container">
+                <h2>🌳 <span class="highlight">"My Roots – The Strength Behind Me"</span></h2>
+                <div class="family-content">
+                    <div class="family-story">
+                        <h3>My Agricultural Family</h3>
+                        <p>I belong to an agricultural family where my mother, father, grandmother, and I live together in a warm and loving home.</p>
+                        
+                        <p><span class="highlight-text">Father:</span><br>
+                        He is my silent strength. He never pressures me, never commands me with strict rules. Instead, he stands beside me like a calm sea — steady, peaceful, and reassuring. In his quiet way, he teaches me trust. His gentle support gives me the courage to move forward without fear.</p>
+                        
+                        <p><span class="highlight-text">Mother:</span><br>
+                        She is the pillar that holds my dreams upright. Her belief in education shapes my path. She guides me patiently — teaching me what to choose and what to avoid. She reminds me that everyone is equal, that no one stands above or below another. Her discipline, care, and wisdom shaped not only my studies, but my character.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="container">
+                <h2>🎓 My <span class="highlight">Education</span></h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-degree">B.Tech – Artificial Intelligence and Data Science</div>
+                        <div class="education-school">M. Kumarasamy College of Engineering, Thalavapalayam, Karur</div>
+                        <div class="education-year">3rd Year (2023 - 2027)</div>
+                        <p>Pursuing comprehensive education in AI/DS fundamentals, UI & UX Design and web development with a focus on practical applications and emerging technologies.</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-degree">Higher Secondary Education – 94.6%</div>
+                        <div class="education-school">Sri Saraswathi Vidhya Mandhir Matric Higher Secondary School, Manmangalam, Karur</div>
+                        <div class="education-year">2022 - 2023</div>
+                        <p>Completed with distinction score of 94.6%, building a strong foundation in Science stream with excellence in mathematics, physics, and biology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships" class="section">
+            <div class="container">
+                <h2>💼 <span class="highlight">Internship Journey</span></h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">My stepping stones of professional growth</p>
+                <div class="internships-grid">
+                    <div class="internship-card">
+                        <div class="internship-role">🌿 Full Stack Developer Intern</div>
+                        <div class="internship-company">Movicloud, Dindigul</div>
+                        <div class="internship-duration">3-Month Internship (Currently Ongoing)</div>
+                        <div class="internship-description">Building scalable applications with frontend-backend integration. Gaining real-time project experience and learning professional development workflows in collaborative environments.</div>
+                    </div>
+                    <div class="internship-card">
+                        <div class="internship-role">🌿 Web Designing Intern</div>
+                        <div class="internship-company">SDLC, Namakkal</div>
+                        <div class="internship-duration">15 Days</div>
+                        <div class="internship-description">Learned website structuring, responsive layouts, and modern UI/UX principles. Created user-friendly interfaces using contemporary design methodologies.</div>
+                    </div>
+                    <div class="internship-card">
+                        <div class="internship-role">🌿 Flutter Development Intern</div>
+                        <div class="internship-company">Future Infotech, Karur</div>
+                        <div class="internship-duration">6 Days</div>
+                        <div class="internship-description">Explored cross-platform mobile development with Flutter. Built mobile UI components and learned Dart programming fundamentals for app development.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>💻 My <span class="highlight">Projects</span></h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Structured solutions built using diverse technologies and problem-solving approaches</p>
+                <div class="projects-grid">
+                    <!-- Individual Projects (Show First) -->
+                    <div class="project-card">
+                        <h3 class="project-title">Java – Movie Ticket Booking System</h3>
+                        <div class="project-role"><i class="fas fa-user"></i> Individual Project</div>
+                        <p class="project-description">A desktop-based application developed using Java Swing that manages movie selection, seat availability per row, dynamic seat pricing based on position, snack selection, Gmail validation, and payment confirmation. The system updates seat booking status automatically after successful transactions.</p>
+                        <div class="project-learnings">
+                            <strong>What I Learned:</strong> GUI development using Java Swing, event handling using ActionListener, implementing seat booking logic with arrays, dynamic price calculation, and user input validation.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">DBMS – College Timetable Management System</h3>
+                        <div class="project-role"><i class="fas fa-user"></i> Individual Project</div>
+                        <p class="project-description">A database-driven system designed to automate timetable generation by managing faculty details, student records, classroom allocation, and subject scheduling. The system ensures efficient timetable organization without clashes.</p>
+                        <div class="project-learnings">
+                            <strong>What I Learned:</strong> SQL query implementation, database structuring, normalization concepts, and managing relationships between tables for scheduling automation.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Spark & Scala Fundamentals – Value Ride</h3>
+                        <div class="project-role"><i class="fas fa-user"></i> Individual Project</div>
+                        <p class="project-description">A data-processing project built using Spark and Scala fundamentals to analyze structured datasets and perform distributed data operations efficiently.</p>
+                        <div class="project-learnings">
+                            <strong>What I Learned:</strong> Basic concepts of Apache Spark, Scala programming fundamentals, distributed data processing, and handling large-scale datasets.
+                        </div>
+                    </div>
+                    
+                    <!-- Team Projects (Show After Individual Projects) -->
+                    <div class="project-card">
+                        <h3 class="project-title">Agile – Green Bin Connect (Trash to Tree)</h3>
+                        <div class="project-role"><i class="fas fa-users"></i> Team Project</div>
+                        <p class="project-description">A project focused on waste management awareness and smart waste tracking using structured planning under Agile methodology principles.</p>
+                        <div class="project-team-size">
+                            <strong>Team Size:</strong> 4 Members
+                        </div>
+                        <div class="project-learnings">
+                            <strong>What I Learned:</strong> Agile workflow practices, sprint planning, team collaboration, task allocation, and project management strategies.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Business Intelligence – Wellness Metrics Unveiled</h3>
+                        <div class="project-role"><i class="fas fa-users"></i> Team Project</div>
+                        <p class="project-description">A Business Intelligence project that analyzed healthcare-related datasets to generate insights about patient flow, recovery trends, and performance metrics.</p>
+                        <div class="project-team-size">
+                            <strong>Team Size:</strong> 4 Members
+                        </div>
+                        <div class="project-learnings">
+                            <strong>What I Learned:</strong> Data analysis techniques, dashboard visualization, teamwork coordination, and deriving insights for decision-making.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3 class="project-title">Data Exploration and Visualization – Traffic Flow Prediction</h3>
+                        <div class="project-role"><i class="fas fa-users"></i> Team Project</div>
+                        <p class="project-description">A project analyzing traffic datasets to understand congestion patterns and visualize traffic flow trends using structured data exploration techniques.</p>
+                        <div class="project-team-size">
+                            <strong>Team Size:</strong> 3 Members
+                        </div>
+                        <div class="project-learnings">
+                            <strong>What I Learned:</strong> Data cleaning, visualization methods, pattern identification, and collaborative project execution.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2>🛠 My <span class="highlight">Skills</span></h2>
+                <div class="skills-container">
+                    <div class="technical-skills">
+                        <h3 class="skills-title">Technical Skills</h3>
+                        <div class="tech-skills-floating">
+                            <div class="floating-skill">
+                                <span class="skill-label">HTML</span>
+                                <div class="skill-line"></div>
+                            </div>
+                            <div class="floating-skill">
+                                <span class="skill-label">CSS</span>
+                                <div class="skill-line"></div>
+                            </div>
+                            <div class="floating-skill">
+                                <span class="skill-label">Java</span>
+                                <div class="skill-line"></div>
+                            </div>
+                            <div class="floating-skill">
+                                <span class="skill-label">SQL</span>
+                                <div class="skill-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="soft-skills">
+                        <h3 class="skills-title">🌟 Soft Skills</h3>
+                        <div class="soft-skills-simple">
+                            <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                                <div class="skill-header">Communication</div>
+                                <div class="skill-description">
+                                    I can communicate easily with others, so communication never becomes a barrier for me to express my valuable thoughts and ideas. I am friendly with people, which makes it easy for me to express what I feel.
+                                </div>
+                            </div>
+                            <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                                <div class="skill-header">Leadership</div>
+                                <div class="skill-description">
+                                    Leadership became real to me when I led a team of three in developing a Hotel Management System project. Guiding my teammates, managing responsibilities, and ensuring timely completion taught me more than theory ever could. We delivered the project successfully and secured strong results. That experience showed me that when responsibility calls, I can rise and lead with clarity and confidence.
+                                </div>
+                            </div>
+                            <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                                <div class="skill-header">Adaptability</div>
+                                <div class="skill-description">
+                                    I can easily adapt to any circumstance. I am not extremely strong in coding, but I adapted myself to learn and improve. I secured very good grades in subjects where coding played a major role. I completed many coding projects with guidance and support.
+                                </div>
+                            </div>
+                            <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                                <div class="skill-header">Teamwork</div>
+                                <div class="skill-description">
+                                    I have worked in many team projects. I prefer teamwork because we can learn from others and guide each other. For example, we participated in SIH as a team of six. Even though we started late, we completed our project within the deadline. That experience taught me that teamwork wins.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Languages Section -->
+                <div class="languages-section">
+                    <h3 class="skills-title">🌍 Languages</h3>
+                    <div class="languages-grid">
+                        <div class="language-item">
+                            <span>தமிழ்</span>
+                        </div>
+                        <div class="language-item">
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <div class="resume-section">
+            <a href="resume.pdf" class="resume-btn" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+                View Resume
+            </a>
+        </div>
+
+        <!-- Certificates Section -->
+        <section id="certificates" class="section">
+            <div class="container">
+                <h2>🏆 <span class="highlight">"Milestones in My Green Path"</span></h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.2rem; font-style: italic;">
+                    From paper presentations to competitions — each certificate represents effort, growth, and courage. Some were wins, some were lessons — but all were stepping stones.
+                </p>
+                <div class="certificates-grid">
+                    <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                        <div class="certificate-image-container">
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Idea Showcasing.jpeg" alt="Ideas Showcasing Certificate" class="certificate-image-preview">
+                            </div>
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Idea Showcasing-ECE.jpeg" alt="Ideas Showcasing ECE" class="certificate-image-preview">
+                            </div>
+                        </div>
+                        <div class="skill-header">
+                            <h3>Ideas Showcasing – First Prize</h3>
+                            <div class="certificate-institution">Department of ECE</div>
+                        </div>
+                        <div class="skill-description">
+                            <p><strong>Story:</strong> We participated as a team in the Ideas Showcasing event conducted by the ECE Department, - M Kumarasamy College of Engineering. Our idea stood out among the participants, and we secured the 1st Prize along with a cash award of ₹1500. This achievement strengthened our confidence in presenting innovative concepts and working collaboratively as a team. It reminded us that creativity, clarity, and teamwork together create impactful results.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                        <div class="certificate-image-container">
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Paavai.jpeg" alt="Paper Presentation Certificate - Paavai" class="certificate-image-preview">
+                            </div>
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Paavai team.jpeg" alt="Paavai Team" class="certificate-image-preview">
+                            </div>
+                        </div>
+                        <div class="skill-header">
+                            <h3>Paper Presentation – First Prize</h3>
+                            <div class="certificate-institution">Paavai Engineering College, Namakkal</div>
+                            <div class="certificate-topic">Topic: HUMAN ROBOT INTERACTION (HRI)</div>
+                        </div>
+                        <div class="skill-description">
+                            <p><strong>Story:</strong> Our team presented a paper on the topic "Human Robot Interaction (HRI)" at Paavai Engineering College, Namakkal. We explained how humans and robots can collaborate effectively in various domains. Our presentation clarity, technical understanding, and teamwork helped us secure the 1st Prize along with a ₹2000 cash award. This moment boosted our confidence and strengthened our presentation skills.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                        <div class="certificate-image-container">
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Sri Ramakrishna-certificate.jpeg" alt="Paper Presentation Certificate - Sri Ramakrishna" class="certificate-image-preview">
+                            </div>
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Sri Ramakrishna team.jpeg" alt="Sri Ramakrishna Team" class="certificate-image-preview">
+                            </div>
+                        </div>
+                        <div class="skill-header">
+                            <h3>Paper Presentation</h3>
+                            <div class="certificate-institution">Sri Ramakrishna College of Engineering, Coimbatore</div>
+                            <div class="certificate-topic">Topic: AI in Robotics: From Industrial Automation to Human Interaction</div>
+                        </div>
+                        <div class="skill-description">
+                            <p><strong>Story:</strong> At Sri Ramakrishna College of Engineering, Coimbatore, we presented a paper titled "AI in Robotics: From Industrial Automation to Human Interaction." The presentation explored the evolution of robotics from industrial automation to human-centered collaboration. This experience enhanced our technical explanation skills and deepened our understanding of AI-driven robotic systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                        <div class="certificate-image-container">
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Karpagam-certifictae.jpeg" alt="National Level Seminar Certificate - Karpagam" class="certificate-image-preview">
+                            </div>
+                            <div class="certificate-image-wrapper">
+                                <img src="images/Karpagam team.jpeg" alt="Karpagam Team" class="certificate-image-preview">
+                            </div>
+                        </div>
+                        <div class="skill-header">
+                            <h3>National Level Seminar</h3>
+                            <div class="certificate-institution">Karpagam Institute of Technology, Coimbatore</div>
+                            <div class="certificate-topic">Topic: Revolutionizing Agriculture with Machine Learning</div>
+                        </div>
+                        <div class="skill-description">
+                            <p><strong>Story:</strong> We attended a National Level Seminar at Karpagam Institute of Technology, Coimbatore, on the topic "Revolutionizing Agriculture with Machine Learning." The seminar highlighted how AI and ML can transform traditional agricultural practices. This session broadened our knowledge on real-world machine learning applications in farming and sustainability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="simple-skill" onclick="toggleSimpleSkill(this)">
+                        <div class="certificate-image-container">
+                            <img src="images/Agile-team.jpeg" alt="Research Paper Publication Certificate - Green Bin Connect" class="certificate-image-preview">
+                        </div>
+                        <div class="skill-header">
+                            <h3>Research Paper Publication</h3>
+                            <div class="certificate-institution">Saveetha Engineering College, Chennai</div>
+                            <div class="certificate-topic">Conference: 10th IEEE International Conference on Smart Structures and Systems (ICSSS 2025)</div>
+                            <div class="certificate-topic">Paper Title: GREEN BIN CONNECT – Converting Daily Waste Reports into Green Initiatives That Build a Cleaner and Greener Earth</div>
+                        </div>
+                        <div class="skill-description">
+                            <p><strong>Story:</strong> Our team successfully published a research paper titled "Green Bin Connect – Converting Daily Waste Reports into Green Initiatives That Build a Cleaner and Greener Earth" at the 10th IEEE International Conference on Smart Structures and Systems (ICSSS 2025) held at Saveetha Engineering College, Chennai. This achievement marked a significant milestone in our academic journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section id="hobbies" class="section">
+            <div class="container">
+                <h2 class="hobbies-title">🌸 <span class="highlight">"Beyond Code: My Soul's Green Garden"</span></h2>
+                <p class="hobbies-subtitle">Where my mind finds peace, creativity, and growth</p>
+                <div class="hobbies-grid">
+                    <div class="hobby-panel" onclick="toggleHobby(this)">
+                        <div class="skill-header">
+                            <i class="fas fa-book-open hobby-icon"></i>
+                            <span class="hobby-title">📚 Reading Tamil Epics</span>
+                            <span class="hobby-description">- Immersing myself in the rich narratives and timeless wisdom of Tamil literature.</span>
+                        </div>
+                        <div class="hobby-content">
+                            <p><strong>My Journey:</strong> I started reading சிலப்பதிகாரம் and மணிமேகலை after receiving them from Amazon as a gift from my uncle. That's when I discovered the beauty of இரட்டை காப்பியம். These ancient stories teach me about resilience, love, and life's complexities. My next goal is to complete ஐம்பெரும் காபியம். and dive deeper into Tamil literary treasures.</p>
+                        </div>
+                    </div>
+                    <div class="hobby-panel" onclick="toggleHobby(this)">
+                        <div class="skill-header">
+                            <i class="fas fa-palette hobby-icon"></i>
+                            <span class="hobby-title">🎨 Mandala Art</span>
+                            <span class="hobby-description">- Creating intricate geometric patterns that bring meditation and mindfulness into art.</span>
+                        </div>
+                        <div class="hobby-content">
+                            <p><strong>My Journey:</strong> Started during 12th standard holidays. Instead of spending time on TV or phone, I spent hours drawing detailed mandalas. Each circle, each pattern required patience and focus. It became my peaceful therapy, teaching me the beauty of symmetry and the therapeutic power of repetitive, focused creation. Every mandala is a meditation session for my mind.</p>
+                        </div>
+                    </div>
+                    <div class="hobby-panel" onclick="toggleHobby(this)">
+                        <div class="skill-header">
+                            <i class="fas fa-pen-fancy hobby-icon"></i>
+                            <span class="hobby-title">📝 Writing Random Thoughts</span>
+                            <span class="hobby-description">- Capturing fleeting moments and deep reflections through the written word.</span>
+                        </div>
+                        <div class="hobby-content">
+                            <p><strong>My Journey:</strong> I write incidents, emotions, perspectives in a diary. I try to understand people — even those opposite to me. I analyze situations, emotions, reactions. It's my emotional research hobby. Whether it's a conversation that moved me, a sunset that inspired me, or a challenge that taught me, I pour it all into words. This helps me process experiences and find clarity in chaos.</p>
+                        </div>
+                    </div>
+                    <div class="hobby-panel" onclick="toggleHobby(this)">
+                        <div class="skill-header">
+                            <i class="fas fa-language hobby-icon"></i>
+                            <span class="hobby-title">🌏 Duolingo Journey</span>
+                            <span class="hobby-description">- Building language skills daily with dedication and persistence.</span>
+                        </div>
+                        <div class="hobby-content">
+                            <p><strong>My Journey:</strong> Maintaining consistency for more than 650 days. This isn't just about learning languages — it's about discipline over motivation. Every day, whether I'm tired, busy, or unmotivated, I show up. This habit has taught me that small daily actions compound into significant achievements. It's my daily reminder that consistency beats intensity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>💬 Let's <span class="highlight">Connect</span></h2>
+                <div class="contact-content">
+                    <p>Ready to collaborate, discuss opportunities, share ideas, or just say hello? I'd love to hear from you and explore how we can work together to create something meaningful.</p>
+                </div>
+                <div class="contact-links">
+                    <a href="tel:+917010366061" class="contact-link">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-label">Call Me</div>
+                        <div style="font-size: 0.9rem; color: var(--text-accent); margin-top: 0.5rem;">7010366061</div>
+                    </a>
+                    <a href="mailto:shrinithivijayakumar11@gmail.com" class="contact-link">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-label">Email Me</div>
+                        <div style="font-size: 0.9rem; color: var(--text-accent); margin-top: 0.5rem;">shrinithivijayakumar11@gmail.com</div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shrinithi-vijayakumar-756441290" class="contact-link" target="_blank">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div style="font-size: 0.9rem; color: var(--text-accent); margin-top: 0.5rem;">Professional Network</div>
+                    </a>
+                    <a href="https://github.com/ShrinithiVijayakumar" class="contact-link" target="_blank">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-label">GitHub</div>
+                        <div style="font-size: 0.9rem; color: var(--text-accent); margin-top: 0.5rem;">Code Repository</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Shrinithi's Ever-Green Journey. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlideIndex = 0;
+        const totalSlides = 3;
+        
+        // Auto slideshow for profile photos
+        function nextSlide() {
+            const allSlides = document.querySelectorAll('.profile-slide');
+            
+            if (allSlides.length > 0) {
+                allSlides[currentSlideIndex].classList.remove('active');
+                currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                allSlides[currentSlideIndex].classList.add('active');
+            }
+        }
+
+        // Start auto slideshow every 3.5 seconds
+        setInterval(nextSlide, 3500);
+
+// ===== SOFT SKILLS INTERACTION =====
+        // Handles accordion-style expanding for soft skills items
+        function toggleSimpleSkill(element) {
+            // Close all other expanded skills first
+            const allSkills = document.querySelectorAll('.simple-skill');
+            allSkills.forEach(skill => {
+                if (skill !== element) {
+                    skill.classList.remove('active'); // Collapse others
+                }
+            });
+            
+            // Toggle the clicked skill (expand/collapse)
+            element.classList.toggle('active');
+        }
+        
+        // ===== CERTIFICATE UPLOAD FUNCTIONALITY =====
+        // Handles certificate image upload and display
+        function uploadCertificate(container) {
+            const input = container.querySelector('.upload-input');
+            input.click(); // Trigger file input dialog
+        }
+
+        function handleFileUpload(input, event) {
+            const file = event.target.files[0];
+            if (file) {
+                const container = input.parentElement;
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    if (file.type.startsWith('image/')) {
+                        container.innerHTML = `<img src="${e.target.result}" alt="Certificate">`;
+                    } else if (file.type === 'application/pdf') {
+                        container.innerHTML = `
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                                <i class="fas fa-file-pdf" style="font-size: 3rem; color: var(--green-primary);"></i>
+                                <p style="margin-top: 1rem; color: var(--text-primary);">PDF Certificate</p>
+                            </div>
+                        `;
+                    }
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Smooth Scrolling and Active Navigation Highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating particles
+            createParticles();
+            
+            // Navigation functionality
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            // Mobile navigation toggle
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Scroll spy for navigation highlighting
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeSection = entry.target.getAttribute('id');
+                        
+                        // Remove active class from all nav links
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        
+                        // Add active class to corresponding nav link
+                        const activeLink = document.querySelector(`[data-section="${activeSection}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80; // Account for navbar height
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll effect to navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 100) {
+                    navbar.style.background = 'rgba(10, 22, 16, 0.98)';
+                    navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+                } else {
+                    navbar.style.background = 'rgba(10, 22, 16, 0.95)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random positioning
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Hobby panel toggle functionality
+        function toggleHobby(panel) {
+            // Close all other expanded hobby panels
+            const allPanels = document.querySelectorAll('.hobby-panel');
+            allPanels.forEach(p => {
+                if (p !== panel) {
+                    p.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle the clicked panel
+            panel.classList.toggle('expanded');
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.project-card, .education-card, .certificate-story, .contact-link, .internship-card, .floating-skill');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('floating-skill')) {
+                        this.style.transform = 'translateY(-5px) scale(1.02)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('floating-skill')) {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            });
+
+            // Add typing effect to home title
+            const homeTitle = document.querySelector('.home-title');
+            if (homeTitle) {
+                const text = homeTitle.innerHTML;
+                homeTitle.innerHTML = '';
+                let i = 0;
+                
+                function typeWriter() {
+                    if (i < text.length) {
+                        homeTitle.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                }
+                
+                setTimeout(typeWriter, 500);
+            }
+        });
+    </script>
+</body>
+</html>

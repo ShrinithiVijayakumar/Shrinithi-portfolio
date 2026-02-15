@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/certificates.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">&lt;Portfolio/&gt;</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="certificates.html" class="nav-link active">Certificates</a></li>
+                <li><a href="hobbies.html" class="nav-link">Hobbies</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="certificates-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>My <span class="highlight">Certificates</span></h1>
+                    <p class="hero-subtitle">Continuous Learning & Professional Development</p>
+                    <p class="hero-description">
+                        Explore my journey of continuous learning through various certifications, courses, 
+                        and achievements. Each certificate represents dedication to mastering new skills 
+                        and staying current with industry trends.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Certificates</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Learning Hours</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Specializations</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="certificate-showcase">
+                        <div class="floating-certificates">
+                            <div class="certificate-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div class="certificate-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="certificate-icon">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="certificate-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="certificate-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All Certificates</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="cloud">Cloud Computing</button>
+                    <button class="filter-btn" data-filter="data">Data Science</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                    <button class="filter-btn" data-filter="other">Other</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Grid -->
+        <section class="certificates-section">
+            <div class="container">
+                <h2 class="section-title">Professional Certifications</h2>
+                <div class="certificates-grid">
+                    <!-- Certificate 1 -->
+                    <div class="certificate-card featured" data-category="web">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="certificate-badge">
+                                <span class="badge featured">Featured</span>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>React Developer Certification</h3>
+                            <p class="certificate-provider">Meta (Facebook)</p>
+                            <p class="certificate-description">
+                                Comprehensive certification covering React fundamentals, hooks, state management, 
+                                and modern React ecosystem.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">React.js</span>
+                                <span class="skill-tag">Hooks</span>
+                                <span class="skill-tag">JSX</span>
+                                <span class="skill-tag">Redux</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Dec 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div class="certificate-card" data-category="cloud">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>AWS Certified Developer</h3>
+                            <p class="certificate-provider">Amazon Web Services</p>
+                            <p class="certificate-description">
+                                Validates expertise in developing and maintaining AWS-based applications with 
+                                focus on security, deployment, and debugging.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Lambda</span>
+                                <span class="skill-tag">DynamoDB</span>
+                                <span class="skill-tag">S3</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Oct 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div class="certificate-card" data-category="web">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-google"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Google Web Developer Certificate</h3>
+                            <p class="certificate-provider">Google Career Certificates</p>
+                            <p class="certificate-description">
+                                Professional certificate program covering HTML, CSS, JavaScript, React, 
+                                and modern web development practices.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Aug 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 4 -->
+                    <div class="certificate-card" data-category="data">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-python"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Python for Data Science</h3>
+                            <p class="certificate-provider">IBM</p>
+                            <p class="certificate-description">
+                                Comprehensive course covering Python programming for data analysis, 
+                                visualization, and machine learning applications.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">NumPy</span>
+                                <span class="skill-tag">Matplotlib</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Jun 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 5 -->
+                    <div class="certificate-card" data-category="design">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-figma"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>UI/UX Design Fundamentals</h3>
+                            <p class="certificate-provider">Adobe Creative Cloud</p>
+                            <p class="certificate-description">
+                                Certification in user interface and user experience design principles, 
+                                prototyping, and design systems.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Adobe XD</span>
+                                <span class="skill-tag">Prototyping</span>
+                                <span class="skill-tag">Design Systems</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: May 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 6 -->
+                    <div class="certificate-card" data-category="web">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>JavaScript Algorithms & Data Structures</h3>
+                            <p class="certificate-provider">freeCodeCamp</p>
+                            <p class="certificate-description">
+                                In-depth certification covering JavaScript ES6+, algorithms, data structures, 
+                                and functional programming concepts.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">ES6+</span>
+                                <span class="skill-tag">Algorithms</span>
+                                <span class="skill-tag">Data Structures</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Mar 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 7 -->
+                    <div class="certificate-card" data-category="cloud">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Azure Fundamentals</h3>
+                            <p class="certificate-provider">Microsoft</p>
+                            <p class="certificate-description">
+                                Foundation knowledge of cloud services and how they are provided with 
+                                Microsoft Azure platform.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">Cloud Computing</span>
+                                <span class="skill-tag">Virtual Machines</span>
+                                <span class="skill-tag">Storage</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Feb 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 8 -->
+                    <div class="certificate-card" data-category="other">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                        <div class="certificate-content">
+                            <h3>Cybersecurity Fundamentals</h3>
+                            <p class="certificate-provider">Cisco Networking Academy</p>
+                            <p class="certificate-description">
+                                Essential cybersecurity principles, threat detection, risk assessment, 
+                                and security best practices.
+                            </p>
+                            <div class="certificate-skills">
+                                <span class="skill-tag">Security</span>
+                                <span class="skill-tag">Risk Assessment</span>
+                                <span class="skill-tag">Network Security</span>
+                                <span class="skill-tag">Encryption</span>
+                            </div>
+                            <div class="certificate-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Completed: Jan 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Timeline -->
+        <section class="achievement-timeline">
+            <div class="container">
+                <h2 class="section-title">Learning Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-content">
+                            <h3>Advanced Certifications</h3>
+                            <p>Pursuing advanced cloud architecture and machine learning certifications</p>
+                            <div class="timeline-achievements">
+                                <span class="achievement-badge">AWS Solutions Architect (In Progress)</span>
+                                <span class="achievement-badge">Machine Learning Specialization (In Progress)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-content">
+                            <h3>Professional Development</h3>
+                            <p>Focused on full-stack development and cloud technologies</p>
+                            <div class="timeline-achievements">
+                                <span class="achievement-badge">8 Certifications Completed</span>
+                                <span class="achievement-badge">300+ Learning Hours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-content">
+                            <h3>Foundation Building</h3>
+                            <p>Started with web development fundamentals and programming basics</p>
+                            <div class="timeline-achievements">
+                                <span class="achievement-badge">First Certification</span>
+                                <span class="achievement-badge">Learning Journey Began</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>Let's Connect and Learn Together</h3>
+                    <p>Interested in discussing technology, sharing learning resources, or collaborating on projects?</p>
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Certificate filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const certificateCards = document.querySelectorAll('.certificate-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    certificateCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.5s ease-out';
+                        } else {
+                            const category = card.getAttribute('data-category');
+                            if (category === filter) {
+                                card.style.display = 'block';
+                                card.style.animation = 'fadeInUp 0.5s ease-out';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Set active nav link
+            document.querySelector('.nav-link[href="certificates.html"]').classList.add('active');
+
+            // Animate certificate cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            certificateCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+
+            // Animate floating certificates
+            const floatingCertificates = document.querySelectorAll('.certificate-icon');
+            floatingCertificates.forEach((icon, index) => {
+                icon.style.animationDelay = index * 0.5 + 's';
+            });
+        });
+    </script>
+</body>
+</html>
